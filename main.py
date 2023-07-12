@@ -13,7 +13,7 @@ if OS == 'darwin':
 
     fzf = FzfPrompt()
     item = fzf.prompt(all_apps)
-    APP_PATH = os.path.join(APP_DIR, ''.join(item))
+    APP_PATH = ''.join(item)
     APP_PATH_SPACE = ""
 
     if ' ' in APP_PATH:
