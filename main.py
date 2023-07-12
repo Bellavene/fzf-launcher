@@ -23,12 +23,10 @@ if OS == 'darwin':
             else:
                 APP_PATH_SPACE += ch
         if item:
-            print(APP_PATH_SPACE)
             print(f"Opening {item}")
             os.system(f"/usr/bin/open {APP_PATH_SPACE}")
     else:
         if item:
-            print(APP_PATH)
             print(f"Opening {item}")
             os.system(f"/usr/bin/open {APP_PATH}")
 else:
