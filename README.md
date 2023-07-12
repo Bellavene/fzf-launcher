@@ -10,9 +10,12 @@ python main.py
 if you use default python, change the path to: /usr/bin/python3
 2. Give execute persmission to file:
 chmod +x main.py
-3. Move it local bin directory, in order to execute it system-wide, make sure it is $PATH
+3. Move it local bin directory, in order to execute it system-wide, make sure it is $PATH, and chage the name
+
 sudo cp main.py /usr/local/bin/name-you-want
-// For example
+
+For example:
 sudo cp main.py /usr/local/bin/sf
-// Run it
+
+Run it
 shell> sf
