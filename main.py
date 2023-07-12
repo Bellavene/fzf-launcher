@@ -1,6 +1,6 @@
+#!/opt/homebrew/bin/python3
 import sys
 import os
-
 from pyfzf.pyfzf import FzfPrompt
 
 OS = sys.platform
