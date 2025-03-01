@@ -1,15 +1,17 @@
-#!/opt/homebrew/bin/python3
+#!/usr/bin/env python3
 import sys
 import os
-from pyfzf.pyfzf import FzfPrompt
+from pyfzf import FzfPrompt
 
 OS = sys.platform
 if OS == 'darwin':
     APP_DIR = '/Applications'
     APP_DIR_SYSTEM = '/System/Applications'
+    APP_DIR_USER = '/Users/Klutchevski/Applications'
     subfolders = [f.path for f in os.scandir(APP_DIR) if f.is_dir()]
     subfolders_system = [f.path for f in os.scandir(APP_DIR_SYSTEM) if f.is_dir()]
-    all_apps = subfolders + subfolders_system
+    subfolders_user = [f.path for f in os.scandir(APP_DIR_USER) if f.is_dir()]
+    all_apps = subfolders + subfolders_system + subfolders_user
 
     fzf = FzfPrompt()
     item = fzf.prompt(all_apps)
