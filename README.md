@@ -1,4 +1,4 @@
-# Cli-app-launcher
+# Macos CLI Application Launcher
 Simple shell script launcher for macOS using fzf.
 
 # installation
