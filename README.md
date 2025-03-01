@@ -5,3 +5,6 @@ Simple shell script launcher for macOS using fzf.
 ```
 chmod +x fzf-launcher && sudo cp fzf-launcher /usr/local/bin/fzf-launcher
 ```
+
+# ToDo
+Replace `find` with something faster
