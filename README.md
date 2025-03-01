@@ -1,5 +1,5 @@
 # Cli-app-launcher
-Simple python cli app launcher for macOS using fzf.
+Simple shell script launcher for macOS using fzf.
 
 # installation
 ```
