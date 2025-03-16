@@ -10,8 +10,10 @@
 # -maxdepth 2 -name "*.app" -s -nocolor \
 ########################################################
 
-open -a "$(spot apps \
+spot apps \
 | xargs -L1 -I{} basename "{}" .app \
 | fzf --no-info --no-sort \
---bind 'enter:execute-silent(open -a {})+track+clear-query')" \
-"$@";exit &> /dev/null
+--bind 'alt-c:execute-silent(echo {} | pbcopy)+track' \
+--bind 'enter:become(open -a {})'; \
+exit
+
