@@ -1,9 +1,8 @@
 #!/bin/zsh
-open -a "$(bfs \
-/Applications \
-~/Applications \
-/System/Applications \
-/System/Library/CoreServices/ \
+open -a "$(ls -d \
+/Applications/*.app ~/Applications/*.app \
+/System/Applications/*.app \
+/System/Library/CoreServices/*.app \
 -maxdepth 2 -name "*.app" -s -nocolor \
 | xargs -L1 -I{} basename "{}" .app \
 | fzf --no-info --no-sort \
