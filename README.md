@@ -1,5 +1,5 @@
 # Macos CLI Application Launcher
-Simple shell script launcher for macOS using fzf.
+Simple shell script launcher for macOS using fzf with mdfind (Spotlight).
 
 # installation
 ```
