@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 ########################################################
-# Uncomment strings below to use ls instead of mdfind
+# Use strings below to use ls instead of mdfind
 #
 # ls -d \
 # /Applications/*.app ~/Applications/*.app \
