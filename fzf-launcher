@@ -1,9 +1,16 @@
 #!/bin/zsh
-open -a "$(ls -d \
-/Applications/*.app ~/Applications/*.app \
-/System/Applications/*.app \
-/System/Library/CoreServices/*.app \
--maxdepth 2 -name "*.app" -s -nocolor \
+
+########################################################
+# Uncomment strings below to use ls instead of spotlight
+#
+# ls -d \
+# /Applications/*.app ~/Applications/*.app \
+# /System/Applications/*.app \
+# /System/Library/CoreServices/*.app \
+# -maxdepth 2 -name "*.app" -s -nocolor \
+########################################################
+
+open -a "$(spot apps \
 | xargs -L1 -I{} basename "{}" .app \
 | fzf --no-info --no-sort \
 --bind 'enter:execute-silent(open -a {})+track+clear-query')" \
