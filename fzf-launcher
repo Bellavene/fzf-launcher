@@ -10,10 +10,10 @@
 # -maxdepth 2 -name "*.app" -s -nocolor \
 ########################################################
 
-spot apps \
-| xargs -L1 -I{} basename "{}" .app \
-| fzf --no-info --no-sort \
+mdfind 'kMDItemContentType == "com.apple.application-*"' \
+| fzf --no-info --no-sort --delimiter / --with-nth -1 --listen 6267 \
 --bind 'alt-c:execute-silent(echo {} | pbcopy)+track' \
---bind 'enter:become(open -a {})'; \
-exit
-
+--bind 'alt-r:execute-silent(open -R {})' \
+--bind 'esc:clear-query+clear-selection' \
+--bind 'enter:execute-silent(yabai -m window --focus recent; open -a {})+clear-query+clear-selection' \
+; exit
