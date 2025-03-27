@@ -10,7 +10,7 @@
 # -maxdepth 2 -name "*.app" -s -nocolor \
 ########################################################
 
-mdfind 'kMDItemContentType == "com.apple.application-*"' \
+mdfind 'kMDItemContentType == "com.apple.application-bundle"' \
 | fzf --no-info --no-sort --delimiter / --with-nth -1 --listen 6267 \
 --bind 'alt-c:execute-silent(echo {} | pbcopy)+track' \
 --bind 'alt-r:execute-silent(open -R {})' \
