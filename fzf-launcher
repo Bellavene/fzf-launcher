@@ -10,7 +10,8 @@
 # -maxdepth 2 -name "*.app" -s -nocolor \
 ########################################################
 
-mdfind 'kMDItemContentType == "com.apple.application-bundle"' \
+cat <(mdfind 'kMDItemContentType == "com.apple.application-bundle"') <(ls -t -d /Applications/*.app /Applications/*/*.app ~/Applications/*.app) \
+| sed '/Safari.app/d' | uniq \
 | fzf --no-info --no-sort --delimiter / --with-nth -1 --listen 6267 \
 --bind 'alt-c:execute-silent(echo {} | pbcopy)+track' \
 --bind 'alt-r:execute-silent(open -R {})' \
