@@ -8,5 +8,3 @@ chmod +x fzf-launcher && sudo cp fzf-launcher /usr/local/bin/fzf-launcher
 # Dependencies
 [file-icon-cli](https://github.com/sindresorhus/file-icon-cli) for icon conversion and imgcat for actual previews
 
-# ToDo
-Add icon preview through sixel
