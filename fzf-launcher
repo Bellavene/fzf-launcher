@@ -11,7 +11,7 @@
 ########################################################
 
 cat <(mdfind 'kMDItemFSName == "*.app"' | sed '/Safari.app/d') <(ls -t -d /Applications/*.app /Applications/*/*.app ~/Applications/*.app) | awk '!x[$0]++' | \
-fzf --no-info --no-sort --listen 6267 \
+fzf --no-info --no-sort \
 --delimiter / --with-nth -1 \
 --margin=0 --padding=0 \
 --preview-window='nohidden' \
