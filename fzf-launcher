@@ -19,4 +19,4 @@ fzf --no-info --no-sort \
 --bind 'alt-c:execute-silent(echo {} | pbcopy)+track' \
 --bind 'alt-r:execute-silent(open -R {})' \
 --bind 'esc:execute-silent(yabai -m window --focus recent)+clear-query' \
---bind 'enter:become(open -a {};q)'
+--bind 'enter:become(open -a {};exit)'
