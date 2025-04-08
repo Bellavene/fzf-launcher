@@ -1,22 +1,24 @@
 #!/bin/zsh
+#########################################
+# macos applications launcher using FZF #
+#########################################
 
-########################################################
-# Use strings below instead of 'spot apps' to use ls instead of mdfind
-#
-# ls -d \
-# /Applications/*.app ~/Applications/*.app \
-# /System/Applications/*.app \
-# /System/Library/CoreServices/*.app \
-# -maxdepth 2 -name "*.app" -s -nocolor \
-########################################################
+#######################################################################
+# Using mdfind to find applications by execution order.               #
+# For some reason Safari.app is always the first in the entry,        #
+# managed it by deleting it from the list. So it shows up at the end. #
+#######################################################################
 
 cat <(mdfind 'kMDItemFSName == "*.app"' | sed '/Safari.app/d') <(ls -t -d /Applications/*.app /Applications/*/*.app ~/Applications/*.app) | awk '!x[$0]++' | \
-fzf --no-info --no-sort \
+fzf --no-info --no-sort --listen 6264 \
 --delimiter / --with-nth -1 \
---margin=0 --padding=0 \
---preview-window='nohidden' \
---preview 'file-icon {} > /tmp/appicon.png;imgcat --width "${FZF_PREVIEW_COLUMNS}" --height "${FZF_PREVIEW_LINES}" "/tmp/appicon.png"' \
+--prompt='' \
+--ghost '' \
+--preview-window='nohidden:right:50%' \
+--preview 'file-icon {} > /tmp/appicon.png;imgcat --depth iterm2 --half-height --width "${FZF_PREVIEW_COLUMNS}" --height "${FZF_PREVIEW_LINES}" "/tmp/appicon.png"' \
+--bind change:first \
 --bind 'alt-c:execute-silent(echo {} | pbcopy)+track' \
---bind 'alt-r:execute-silent(open -R {})' \
---bind 'esc:execute-silent(yabai -m window --focus recent)+clear-query' \
---bind 'enter:become(open -a {};exit)'
+--bind 'alt-r:execute-silent(open -R {})+clear-query' \
+--bind 'alt-u:become(uninstall {};launcher)+clear-query' \
+--bind 'esc:track+clear-query' \
+--bind 'enter:execute-silent(open -a {})+track+clear-query'
