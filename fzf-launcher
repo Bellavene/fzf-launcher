@@ -12,13 +12,14 @@
 cat <(mdfind 'kMDItemFSName == "*.app"' | sed '/Safari.app/d') <(ls -t -d /Applications/*.app /Applications/*/*.app ~/Applications/*.app) | awk '!x[$0]++' | \
 fzf --no-info --no-sort --listen 6264 \
 --delimiter / --with-nth -1 \
+--margin=1 --padding=0 \
 --prompt='' \
 --ghost '' \
 --preview-window='nohidden:right:50%' \
 --preview 'file-icon {} > /tmp/appicon.png;imgcat --depth iterm2 --half-height --width "${FZF_PREVIEW_COLUMNS}" --height "${FZF_PREVIEW_LINES}" "/tmp/appicon.png"' \
 --bind change:first \
 --bind 'alt-c:execute-silent(echo {} | pbcopy)+track' \
---bind 'alt-r:execute-silent(open -R {})+clear-query' \
---bind 'alt-u:become(uninstall {};launcher)+clear-query' \
---bind 'esc:track+clear-query' \
---bind 'enter:execute-silent(open -a {})+track+clear-query'
+--bind 'alt-r:become(open -R {})' \
+--bind 'esc:abort' \
+--bind 'alt-q:abort' \
+--bind 'enter:become(open -a {})'
