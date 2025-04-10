@@ -11,6 +11,7 @@ For realtime update you need to add a system watcher which will watch for new cl
 ```
 curl -XPOST "localhost:6265" -d 'reload(sqlite-utils "$HOME/Library/Application Support/BetterTouchTool/BTTClipboardManager_20241210.sqlite" "select Z_PK, ZPREVIEWTEXT from ZBTTCLIP" | jq -r --raw-output0 ".[].ZPREVIEWTEXT")'
 ```
+You can add a watcher by several applications.
 ## Dependencies
 [file-icon-cli](https://github.com/sindresorhus/file-icon-cli) for icon conversion and imgcat for actual previews
 
